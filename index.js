@@ -1,5 +1,4 @@
 module.exports = function(string, object) {
-  console.log(string, object);
   if (!string || !object) {
     throw new Error('must provide string and object arguments');
   }
