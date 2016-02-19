@@ -6,6 +6,8 @@ Pass in a string, and object contain functions that could possibly match string 
 
 ### use
 
+`npm i --save match-default`
+
 ```js
 import match from 'match-default';
 const data = match('string', {
