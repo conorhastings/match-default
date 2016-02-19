@@ -30,3 +30,8 @@ test('should call matched function if there is a match', assert => {
   assert.ok(match('string', {string: () => "cool", _: () => ""}) === "cool", "matched func called");
   assert.end();
 });
+
+test('should throw if object has match but match is not a function', assert => {
+  assert.throws(() => match('string', {string: "i am a string", _: () => ""}));
+  assert.end();
+});
