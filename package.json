@@ -1,0 +1,19 @@
+{
+  "name": "match-default",
+  "version": "0.0.1",
+  "description": "matches string to object key, if no match calls default case",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./test/index.js"
+  },
+  "keywords": [
+    "match",
+    "pattern",
+    "default"
+  ],
+  "author": "Conor Hastings",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.4.0"
+  }
+}
