@@ -1,6 +1,6 @@
 ### match-default
 
-Pass in string, and object contain functions that could possibly match string + a default function. Made because I think this looks really nice with redux.
+Pass in a string, and object contain functions that could possibly match string + a default function. Made because I think this looks really nice with redux.
 
 ### use
 
