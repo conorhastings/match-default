@@ -13,20 +13,23 @@ module.exports = function(argument1, argument2) {
     }
   }
   else {
-    throw new Error('invalid number of arguments');
+    throw new Error('invalid number of arguments, must provide 1 or 2 arguments, you have provided ' + arguments.length);
   }
 }
 
 function match(string, object) {
-    if (!string || !object) {
+  if (!string || !object) {
     throw new Error('must provide string and object arguments');
   }
-  if (!object._ || typeof object._ !== 'function') {
-    throw new Error('must provide default function case');
+  if (!object._) {
+    throw new Error('must provide default function case with _ object key');
+  }
+  else if (typeof object._ !== 'function') {
+    throw new Error('default case must be a function, provided type is: ' + typeof object._);
   }
   var fn = object[string];
   if (fn && typeof fn !== 'function') {
-    throw new Error('matched argument must be a function');
+    throw new Error('matched argument must be a function for key ' + string + '. provided type is: ' + typeof fn);
   }
   else if(fn) {
     return fn();
