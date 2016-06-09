@@ -1,23 +1,21 @@
-module.exports = function(argument1, argument2) {
+module.exports = function(object, string) {
   if (arguments.length === 2) {
-    return match(argument1, argument2);
+    return match(object, string);
   }
-  else if (arguments.length === 1 && typeof argument1 === 'string') {
-    return function(object) {
-      return match(argument1, object);
-    }
-  }
-  else if (arguments.length === 1 && typeof argument1 === 'object' && !Array.isArray(argument1)) {
+  else if (arguments.length === 1 && typeof object === 'object' && !Array.isArray(object)) {
     return function(string) {
-      return match(string, argument1);
+      return match(object, string);
     }
+  }
+  else if (arguments.length === 1) {
+    throw new Error('to curry function, single argument must be an object. provided type is: ' + typeof object);
   }
   else {
     throw new Error('invalid number of arguments, must provide 1 or 2 arguments, you have provided ' + arguments.length);
   }
 }
 
-function match(string, object) {
+function match(object, string) {
   if (!string || !object) {
     throw new Error('must provide string and object arguments');
   }
