@@ -2,17 +2,23 @@ var test = require('tape');
 var match = require ("../index");
 
 test('it should throw if no arguments are provided', assert => {
-  assert.throws(() => match());
+  assert.throws(
+    () => match(), 
+    'invalid number of arguments, must provide 1 or 2 arguments, you have provided 0'
+  );
   assert.end();
 });
 
 test('it should throw if no default is provided', assert => {
-  assert.throws(() => match('string', {a: () => ""}));
+  assert.throws(() => match('string', {a: () => ""}), 'must provide default function case with _ object key');
   assert.end();
 });
 
 test('it should throw if default is not a function', assert => {
-  assert.throws(() => match('string', {a: () => "", _: ""}));
+  assert.throws(
+    () => match('string', {a: () => "", _: "s"}), 
+    'default case must be a function, provided type is: string'
+  );
   assert.end();
 });
 
@@ -27,12 +33,18 @@ test('should call matched function if there is a match', assert => {
 });
 
 test('should throw if object has match but match is not a function', assert => {
-  assert.throws(() => match('string', {string: "i am a string", _: () => ""}));
+  assert.throws(
+    () => match('string', {string: "i am a string", _: () => ""}), 
+    'matched argument must be a function for key string. provided type is: string'
+  );
   assert.end();
 });
 
 test('it should throw if more than 2 arguments are provided', assert => {
-  assert.throws(() => match('string', {_: () => {}}, 'what ami'));
+  assert.throws(
+    () => match('string', {_: () => {}}, 'what ami'),
+     'invalid number of arguments, must provide 1 or 2 arguments, you have provided 3'
+  );
   assert.end();
 });
 
