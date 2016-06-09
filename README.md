@@ -10,24 +10,17 @@ Pass in a string, and object contain functions that could possibly match string 
 
 ```js
 import match from 'match-default';
-const data = match('string', {
+const data = match({
 	a: () => 'nice',
 	b: () => 'cool',
 	string: () => 'woo',
 	_: () => ''
-});
+}, 'string');
 ```
 
 ### Currying
 
-The function can also be curried by passing in a single argument, a string or an object. if passing in a string, a function will be returned expecting an object argument. In the more common case, just passing in an object, a function will be returned expecting a single argument of a string.
-
-```js
-  import match from 'match-default';
-  const matcher = match('cool');
-  const myMatch = matcher({cool: () => 'wow', _: () => {}});
-  console.log(myMatch) // myMatch === 'wow'
-  ```
+The function can also be curried by passing in a single argument of an object. A function will be returned expecting a single argument of a string to match against the provided object.
 
   ```js
   import match from 'match-default';
