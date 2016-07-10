@@ -2,7 +2,7 @@
 
 <img src="https://travis-ci.org/conorhastings/match-default.svg?branch=master" />
 
-Pass in a string, and object contain functions that could possibly match string + a default function denoted with the _ key. Made because I think this looks really nice with redux.
+Pass in a string, and object contain functions that could possibly match string + a default function denoted with the _ key. Made because I think this looks really nice with redux, semi inspired by the pattern matching implementation in Rust. 
 
 ### use
 
