@@ -65,6 +65,13 @@ test('it should return a function if given single object argument', assert => {
 test('it should return a function if given single object argument and match string against that obj', assert => {
   const matcher = match({cool: () => "cool", _: () => {}});
   const myMatch = matcher('cool');
-   assert.equal(myMatch, 'cool', 'returns correct return from matched string');
+  assert.equal(myMatch, 'cool', 'returns correct return from matched string');
+  assert.end();
+});
+
+test('it should pass arguments when currying', assert => {
+  const matcher = match({cool: (_, fun) => fun, _: () => {}});
+  const myMatch = matcher('cool', 'fun');
+  assert.equal(myMatch, 'fun', 'returns correct return from matched string');
   assert.end();
 });

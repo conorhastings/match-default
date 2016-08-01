@@ -4,7 +4,8 @@ module.exports = function(object, string) {
   }
   else if (arguments.length === 1 && typeof object === 'object' && !Array.isArray(object)) {
     return function(string) {
-      return match(object, string);
+      var args = Array.prototype.slice.call(arguments, 0);
+      return match(object, string, args);
     }
   }
   else if (arguments.length === 1) {
@@ -15,7 +16,8 @@ module.exports = function(object, string) {
   }
 }
 
-function match(object, string) {
+function match(object, string, args) {
+  args = args || [];
   if (!string || !object) {
     throw new Error('must provide string and object arguments');
   }
@@ -25,12 +27,11 @@ function match(object, string) {
   else if (typeof object._ !== 'function') {
     throw new Error('default case must be a function, provided type is: ' + typeof object._);
   }
-  var fn = object[string];
+  var fn = object[string] || object._;
   if (fn && typeof fn !== 'function') {
     throw new Error('matched argument must be a function for key ' + string + '. provided type is: ' + typeof fn);
   }
   else if(fn) {
-    return fn();
+    return fn.apply(this, args);
   }
-  return object._();
 }
