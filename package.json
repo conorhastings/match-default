@@ -1,6 +1,6 @@
 {
   "name": "match-default",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "matches string to object key, if no match calls default case",
   "main": "index.js",
   "scripts": {
