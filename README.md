@@ -20,7 +20,7 @@ const data = match({
 
 ### Currying
 
-The function can also be curried by passing in a single argument of an object. A function will be returned expecting a single argument of a string to match against the provided object.
+The function can also be curried by passing in a single argument of an object. A function will be returned expecting a single argument of a string to match against the provided object. All arguments with also be passed along to the called function.
 
   ```js
   import match from 'match-default';
